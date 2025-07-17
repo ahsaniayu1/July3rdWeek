@@ -11,7 +11,4 @@ from
     join Person.Person p on sp.BusinessEntityID = p.BusinessEntityID
 where
     o.SalesPersonID is not null
-group by
-    p.FirstName,
-    p.MiddleName,
-    p.LastName;
+group by (p.FirstName + ' ' + isnull(p.MiddleName + ' ', '') + p.LastName)
